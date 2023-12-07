@@ -1,3 +1,4 @@
+
 <template>
   <div class="container">
     <div class="formmmm">
@@ -13,7 +14,8 @@
         <label for="repeat-password">Yeni Sifre Tekrar:</label>
         <input type="password" id="repeat-password" v-model="repeatPassword" />
       </div>
-      <RouterLink to="/profil"><button @click="savePassword">Kaydet</button></RouterLink>
+      <!--<RouterLink to="/profil"></RouterLink>-->
+      <button @click="savePassword">Kaydet</button>
     </div>
   </div>
 </template>
@@ -32,9 +34,10 @@ export default {
       if (this.newPassword !== this.repeatPassword) {
         // Show error message or handle the mismatched passwords
         alert('Passwords do not match.');
-      } else {
-        // Save the password or perform any other necessary actions
-        // You can access the entered passwords using this.currentPassword, this.newPassword, this.repeatPassword
+      } else if(this.newPassword == '' || this.repeatPassword == '' || this.currentPassword == ''){
+        alert('Fill in the blanks.')
+      }else{
+        this.$router.push('/profil');
       }
     }
   }
